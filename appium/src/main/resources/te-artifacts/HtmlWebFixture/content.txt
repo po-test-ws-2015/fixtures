@@ -1,8 +1,8 @@
 |import|
-|org.testeditor.fixture.web|
+|org.testeditor.fixture.appium|
 
 !|Library|
-|org.testeditor.fixture.web.HtmlWebFixture|
+|org.testeditor.fixture.appium.HtmlWebFixture|
 
 -!|script|
 |setTimeout|10|
