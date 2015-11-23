@@ -13,6 +13,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testeditor.fixture.core.elementlist.ElementListService;
+import org.testeditor.fixture.core.exceptions.ElementKeyNotFoundException;
 import org.testeditor.fixture.core.exceptions.StopTestException;
 import org.testeditor.fixture.core.interaction.Fixture;
 import org.testeditor.fixture.core.interaction.StoppableFixture;
@@ -29,8 +30,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture {
 	
 	private static String appPrefix = "de.akquinet.campusapp.haw_hamburg:id/";
-	private static String AppPath = "C:/Users/daniel/Projekte/haw/po-ws2015";
-	private static String AppFilename = "de.akquinet.campusapp.haw_hamburg.apk";
+	private static String appPath = "C:/Users/daniel/Projekte/haw/po-ws2015/de.akquinet.campusapp.haw_hamburg.apk";
 	
 	/** Represents a map with user defined names and application elements. */
 	protected ElementListService elementListService;
@@ -60,6 +60,10 @@ abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture
 	 */
 	public void setElementlist(String elementList) {
 		this.elementListService = ElementListService.instanceFor(elementList);
+		try {
+			appPrefix = this.elementListService.getValue("appPrefix");
+			appPath = this.elementListService.getValue("appPath"); 
+		} catch (ElementKeyNotFoundException e) {}
 	}
 
 	/**
@@ -103,7 +107,7 @@ abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture
 	public boolean startApp() {
 		logger.info("Starting up app");
 		
-		File app = new File(AppPath, AppFilename);
+		File app = new File(appPath);
 		
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
