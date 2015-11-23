@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-</xs:schema>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ActionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://testeditor.org/xsd_schema/v_1_1/AllActionGroups.xsd"
+	schemaVersion="1.1">
+
+	<ActionGroup name="App">
+		<action technicalBindingType="startApp" />
+        <action technicalBindingType="stopApp" />
+        <action technicalBindingType="doClick" />
+        <action technicalBindingType="doTextinput" />
+        <action technicalBindingType="elementExists" />
+	</ActionGroup>
+
+</ActionGroups>

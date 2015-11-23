@@ -22,8 +22,15 @@ public class AppiumFixtureTests {
 	}
 
 	@Test
-	public void testDoClick() {
-		fail("Not yet implemented");
+	public void testLogin() {
+		assertTrue(fixture.doClick("heliosLoginButton"));
+		assertTrue(fixture.doTextinput("usernameEditText", "abl117"));
+	}
+	
+	@Test
+	public void testNonExistingElements() {
+		assertFalse(fixture.doTextinput("blablubb", "abl117"));
+		assertFalse(fixture.doClick("abl117"));
 	}
 
 }

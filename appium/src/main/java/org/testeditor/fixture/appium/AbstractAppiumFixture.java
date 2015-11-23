@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testeditor.fixture.core.elementlist.ElementListService;
@@ -28,6 +29,8 @@ import io.appium.java_client.remote.MobileCapabilityType;
 abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture {
 	
 	private static String appPrefix = "de.akquinet.campusapp.haw_hamburg:id/";
+	private static String AppPath = "C:/Users/daniel/Projekte/haw/po-ws2015";
+	private static String AppFilename = "de.akquinet.campusapp.haw_hamburg.apk";
 	
 	/** Represents a map with user defined names and application elements. */
 	protected ElementListService elementListService;
@@ -93,10 +96,14 @@ abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture
 		return true;
 	}
 	
+	public boolean stopApp() {
+		return quitDriver();
+	}
+	
 	public boolean startApp() {
 		logger.info("Starting up app");
 		
-		File app = new File("C:/Users/daniel/Projekte/haw/po-ws2015", "de.akquinet.campusapp.haw_hamburg.apk");
+		File app = new File(AppPath, AppFilename);
 		
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
@@ -120,13 +127,17 @@ abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture
 	}
 
 	public boolean doClick(String elementName) {
+		logger.info("Clicking element " + elementName);
 		try {
 			WebElement element = driver.findElementById(appPrefix + elementName);
 			
 			element.click();
 			
 			return true;
-		} catch (Exception e) {
+		} catch(NoSuchElementException e) {
+			return false;
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			
 			return false;
@@ -134,17 +145,36 @@ abstract public class AbstractAppiumFixture implements StoppableFixture, Fixture
 	}
 	
 	public boolean doTextinput(String elementName, String text) {
+		logger.info("Writing Text " + text + " to element " + elementName);
 		try {
-		WebElement element = driver.findElementById(appPrefix + elementName);
-		
-		element.sendKeys(text);
-		
-		return true;
+			WebElement element = driver.findElementById(appPrefix + elementName);
+			
+			element.sendKeys(text);
+			
+			return true;
+		} catch(NoSuchElementException e) {
+			return false;
 		} catch(Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+	
+	public boolean elementExists(String elementName) {
+		logger.info("Checking for existence of " + elementName);
+		
+		try {
+			WebElement element = driver.findElementById(appPrefix + elementName);
+			
+			return true;
+		} catch(NoSuchElementException e) {
+			return false;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	@Override
 	public void preInvoke(Method method, Object instance, Object... convertedArgs)
 			throws InvocationTargetException, IllegalAccessException {

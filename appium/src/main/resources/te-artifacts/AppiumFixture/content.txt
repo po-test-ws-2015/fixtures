@@ -7,3 +7,23 @@
 -!|script|
 |setTimeout|10|
 |setElementlist|${ELEMENT_LISTE}|
+
+'''AbstractAppiumFixture - Start App (startApp)'''
+!|scenario|Starte App.|
+|startApp;|
+
+'''AbstractAppiumFixture - Stop App (stopApp)'''
+!|scenario|Stoppe App.|
+|stopApp;|
+
+'''AbstractAppiumFixture - Click element (doClick)'''
+!|scenario|Tippe Element|element|an.|
+|doClick;|@element|
+
+'''AbstractAppiumFixture - Check element's existence (elementExists)'''
+!|scenario|Prüfe ob Element|element|existiert.|
+|elementExists;|@element|
+
+'''AbstractAppiumFixture - Input text element (doTextinput)'''
+!|scenario|Tippe Text|text|in Element|element|ein.|
+|doTextinput;|@element|@text|
