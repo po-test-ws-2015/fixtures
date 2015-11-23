@@ -7,4 +7,6 @@ package org.testeditor.fixture.appium;
  */
 public class AppiumFixture extends AbstractAppiumFixture {
 
+	public AppiumFixture() {}
+	
 }
