@@ -42,12 +42,12 @@
 	</repositories>
 
 	<dependencyManagement>
-			<dependencies>
-				<dependency>
+		<dependencies>
+			<dependency>
 	            <groupId>io.appium</groupId>
 	            <artifactId>java-client</artifactId>
 	            <version>${io.appium.java-client.version}</version>
-	        </dependency>
+        	</dependency>
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
