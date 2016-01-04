@@ -1,0 +1,5 @@
+# Maske: App
+-!|script|
+|Starte App.|
+|Tippe Element|loginGuestButton|an.|
+|Stoppe App.|

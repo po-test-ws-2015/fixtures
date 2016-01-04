@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TechnicalBindingTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xsi:noNamespaceSchemaLocation="../../org.testeditor.xmllibrary/resources/TechnicalBindingTypeCollection.xsd">
+
+    <TechnicalBindingType id="startApp" name="App starten">
+        <actionPart position="1" type="TEXT" value="Starte App."/>
+    </TechnicalBindingType>
+
+    <TechnicalBindingType id="stopApp" name="App stoppen">
+        <actionPart position="1" type="TEXT" value="Stoppe App."/>
+    </TechnicalBindingType>
+
+    <TechnicalBindingType id="doClick" name="Antippen">
+        <actionPart position="1" type="TEXT" value="Tippe Element"/>
+        <actionPart position="2" type="ARGUMENT" id="element" />
+        <actionPart position="3" type="TEXT" value="an." />
+    </TechnicalBindingType>
+
+    <TechnicalBindingType id="elementExists" name="Element existiert">
+        <actionPart position="1" type="TEXT" value="Prüfe ob Element"/>
+        <actionPart position="2" type="ARGUMENT" id="element" />
+        <actionPart position="3" type="TEXT" value="existiert." />
+    </TechnicalBindingType>
+
+    <TechnicalBindingType id="doTextinput" name="Text eingeben">
+        <actionPart position="1" type="TEXT" value="Tippe Text"/>
+        <actionPart position="2" type="ARGUMENT" id="text" />
+        <actionPart position="3" type="TEXT" value="in Element"/>
+        <actionPart position="4" type="ARGUMENT" id="element" />
+        <actionPart position="5" type="TEXT" value="ein."/>
+    </TechnicalBindingType>
+
+</TechnicalBindingTypes>

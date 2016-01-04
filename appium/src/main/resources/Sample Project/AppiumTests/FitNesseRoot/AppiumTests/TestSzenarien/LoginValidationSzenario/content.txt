@@ -1,0 +1,8 @@
+!|scenario |LoginValidationSzenario _|Name, Passwort|
+|note| Maske: App|
+|Starte App.|
+|Tippe Element|loginHeliosButton|an.|
+|Tippe Text|@Name|in Element|usernameEditText|ein.|
+|Tippe Text|@Passwort|in Element|passwordEditText|ein.|
+|Tippe Element|loginButton|an.|
+|Stoppe App.|

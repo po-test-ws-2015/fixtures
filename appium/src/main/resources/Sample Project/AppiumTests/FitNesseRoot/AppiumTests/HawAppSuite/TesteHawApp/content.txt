@@ -1,0 +1,5 @@
+!include <AppiumTests.TestSzenarien.LoginValidationSzenario
+!|Login Validation Szenario|
+|Name|Passwort|
+|abl117|test|
+#

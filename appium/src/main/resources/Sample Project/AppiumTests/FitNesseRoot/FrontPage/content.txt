@@ -1,0 +1,5 @@
+!1 AppiumTests
+
+
+
+!note Release ${FITNESSE_VERSION}
